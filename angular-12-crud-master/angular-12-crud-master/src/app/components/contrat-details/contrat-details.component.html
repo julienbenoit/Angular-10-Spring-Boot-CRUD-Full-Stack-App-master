@@ -1,0 +1,129 @@
+<div>
+  <div *ngIf="currentContrat.id" class="edit-form">
+    <h4>Contrat</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="currentContrat.nom"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Nom etablissement</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="currentContrat.nomEtablissement"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+      <label for="title">devise</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        required
+        [(ngModel)]="currentContrat.devise"
+        name="title"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">montantOuverture</label>
+      <input
+        class="form-control"
+        id="description"
+        type="number"
+        required
+        [(ngModel)]="currentContrat.montantOuverture"
+        name="description"
+      />
+    </div>
+
+    <div class="form-group">
+    <label for="title">dateOuverture</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      required
+      [(ngModel)]="currentContrat.dateOuverture"
+      name="title"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="description">allocation</label>
+    <input
+      class="form-control"
+      id="description"
+      required
+      [(ngModel)]="currentContrat.allocation"
+      name="description"
+    />
+  </div>
+  <div *ngIf="currentContrat.client">
+  <div class="form-group">
+    <label for="title">Nom Client</label>
+  
+    <input
+     type="text"
+     class="form-control"
+     id="title"
+     required
+     [(ngModel)]="currentContrat.client.nom"
+     name="title"
+   />
+    </div>
+ 
+ <div class="form-group">
+   <label for="description">Prenom client</label>
+   <input
+     class="form-control"
+     id="description"
+     required
+     [(ngModel)]="currentContrat.client.prenom"
+     name="description"
+   />
+ </div>
+ 
+ <div class="form-group">
+   <label for="description">Email client</label>
+   <input
+     class="form-control"
+     id="description"
+     required
+     [(ngModel)]="currentContrat.client.email"
+     name="description"
+   />
+ </div>
+</div>
+     </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteContrat()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateContrat()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentContrat.id">
+    <br />
+    <p>Cannot access this Contrat...</p>
+  </div>
+</div>

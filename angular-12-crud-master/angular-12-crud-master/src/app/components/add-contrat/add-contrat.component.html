@@ -1,0 +1,110 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <form (submit)="saveContrat()" #contratForm>
+      <div class="form-group">
+        <label for="title">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="contrat.nom"
+          name="title"
+        />
+       </div>
+
+      <div class="form-group">
+        <label for="description">Nom etablissement</label>
+        <input
+          class="form-control"
+          required
+          [(ngModel)]="contrat.nomEtablissement"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+      <label for="title">devise</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="contrat.devise"
+        name="title"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="description">montantOuverture</label>
+      <input
+        class="form-control"
+        required
+        type="number"
+        [(ngModel)]="contrat.montantOuverture"
+        name="description"
+      />
+    </div>
+
+    <div class="form-group">
+    <label for="title">dateOuverture</label>
+    <input
+      type="text"
+      class="form-control"
+      required
+      [(ngModel)]="contrat.dateOuverture"
+      name="title"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="description">allocation</label>
+    <input
+      class="form-control"
+      required
+      [(ngModel)]="contrat.allocation"
+      name="description"
+    />
+  </div>
+  <div *ngIf="contrat.client">
+   <div class="form-group">
+   <label for="title">Nom Client</label>
+ 
+   <input
+    type="text"
+    class="form-control"
+    required
+    [(ngModel)]="contrat.client.nom"
+    name="title"
+  />
+   </div>
+
+<div class="form-group">
+  <label for="description">Prenom client</label>
+  <input
+    class="form-control"
+    required
+    [(ngModel)]="contrat.client.prenom"
+    name="description"
+  />
+</div>
+
+<div class="form-group">
+  <label for="description">Email client</label>
+  <input
+    class="form-control"
+    required
+    [(ngModel)]="contrat.client.email"
+    name="description"
+  />
+</div>
+</div>
+      <button type="submit" [disabled]="!contratForm.checkValidity()">Submit</button>
+
+      </form>      
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>contrat was submitted successfully!</h4>
+    </div>
+  </div>
+</div>

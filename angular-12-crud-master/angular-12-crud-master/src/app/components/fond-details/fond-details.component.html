@@ -1,0 +1,135 @@
+<div>
+  <div *ngIf="currentFond.id" class="edit-form">
+    <h4>Fond</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">code Usi</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="currentFond.codeUsi"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="title">nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nomF"
+          required
+          [(ngModel)]="currentFond.nom"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="codeEtablissement">codeEtablissement</label>
+        <input
+          class="form-control"
+          id="codeEtablissement"
+          required
+          [(ngModel)]="currentFond.codeEtablissement"
+          name="codeEtablissement"
+        />
+      </div>
+      <div class="form-group">
+        <label for="montantOuverture">montantOuverture</label>
+        <input
+          class="form-control"
+          id="montantOuverture"
+          type="number"
+          required
+          [(ngModel)]="currentFond.montantOuverture"
+          name="montantOuverture"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="dateCreation">dateCreation</label>
+        <input
+          class="form-control"
+          id="dateCreation"
+          required
+          [(ngModel)]="currentFond.dateCreation"
+          name="dateCreation"
+        />
+      </div>
+      <div class="form-group">
+        <label for="allocation">allocation</label>
+        <input
+          class="form-control"
+          id="allocation"
+          type="number"
+          required
+          [(ngModel)]="currentFond.allocation"
+          name="allocation"
+        />
+      </div>
+      <div *ngIf="currentFond.gerant">
+      <div class="form-group">
+        <label for="nomg">gerant nom</label>
+        <input
+          class="form-control"
+          id="nomg"
+          required
+          [(ngModel)]="currentFond.gerant.nom"
+          name="nomg"
+        />
+      </div>
+      <div class="form-group">
+        <label for="prenomg">gerant prenom</label>
+        <input
+          class="form-control"
+          id="prenomg"
+          required
+          [(ngModel)]="currentFond.gerant.prenom"
+          name="prenomg"
+        />
+      </div>
+      <div class="form-group">
+        <label for="presentation">gerant presentation</label>
+        <input
+          class="form-control"
+          id="presentation"
+          required
+          [(ngModel)]="currentFond.gerant.presentation"
+          name="presentation"
+        />
+      </div>
+      <div class="col-md-6">
+        <h4>Contrat List</h4>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let contrat of contrats; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveContrat(contrat, i)"
+          >
+            {{ contrat.nom }}
+          </li>
+        </ul>
+    </div>
+    </div>
+     </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteContrat()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateFond()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentFond.id">
+    <br />
+    <p>Cannot access this Contrat...</p>
+  </div>
+</div>

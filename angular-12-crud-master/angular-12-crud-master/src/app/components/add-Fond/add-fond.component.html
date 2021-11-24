@@ -1,0 +1,121 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <form (submit)="saveFond()" #fondForm>
+      <div class="form-group">
+        <label for="title">code Usi</label>
+        <input
+          type="text"
+          class="form-control"
+          required
+          [(ngModel)]="fond.codeUsi"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="title">nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nomF"
+          required
+          [(ngModel)]="fond.nom"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">codeEtablissement</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="fond.codeEtablissement"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">montantOuverture</label>
+        <input
+          class="form-control"
+          type="number"
+          id="description"
+          required
+          [(ngModel)]="fond.montantOuverture"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">dateCreation</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="fond.dateCreation"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">allocation</label>
+        <input
+          class="form-control"
+          id="description"
+          type="number"
+          required
+          [(ngModel)]="fond.allocation"
+          name="description"
+        />
+      </div>
+      <div *ngIf="fond.gerant">
+      <div class="form-group">
+        <label for="description">gerant nom</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="fond.gerant.nom"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">gerant prenom</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="fond.gerant.prenom"
+          name="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">gerant presentation</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="fond.gerant.presentation"
+          name="description"
+        />
+      </div>
+    </div>
+      <div class="col-md-6">
+        <h4>Selectionner un contrat </h4>
+        <ul class="list-group">
+          <li
+            class="list-group-item"
+            *ngFor="let contrat of contrats; let i = index"
+            [class.active]="i == currentIndex"
+            (click)="setActiveContrat(contrat, i)"
+          >
+            {{ contrat.nom }}
+          </li>
+        </ul>
+     
+    </div>
+ <button type="submit" [disabled]="!fondForm.checkValidity()">Submit</button>
+      </form>
+    <div *ngIf="submitted">
+      <h4>Fond was submitted successfully!</h4>
+    </div>
+  </div>
+</div>
